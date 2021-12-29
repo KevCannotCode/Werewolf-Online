@@ -1,17 +1,25 @@
+import java.io.Serializable;
+import java.util.Map;
 
-public class Werewolf extends Player {
+public class Werewolf extends Player implements Serializable{
+	
+	public Werewolf(String name) {
+		this.name = name;
+		this.canVote = 1;
+		this.mayor = false;
+		this.ROLE = Roles.WEREWOLF.toString();
+		this.dead = false;
+	}
+	
 	//If the array only contains a Werewolf then the player wins
 	@Override
-	boolean win(Player[] players) {
-		for(int i = 0; i < players.length; i++)
-			if(!players[i].dead && !players[i].role.equals("Werewolf") )
-				return false;
-		return true;
+	boolean win(Map<String, Integer> players) {
+		return (players.get(Roles.WEREWOLF.toString()) > 0) ? true : false;
 	}
 
 	//Villagers are useless so...
 	@Override
 	String action() {
-		return "GRRRRRR miam miam";
+		return "GRRRRRR miam miam!";
 	}
 }
