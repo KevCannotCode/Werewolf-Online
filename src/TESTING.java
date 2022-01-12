@@ -11,10 +11,13 @@ public class TESTING {
 
 		WerewolfGame w = new WerewolfGame();
 		w.start();
-		System.out.println(w.count.toString());
-		System.out.println(w.players.toString());
-		
-		System.out.println(w.players.get(0).vote(w.players) );
+		System.out.println(w.roleCount.toString());
+		System.out.println(w.playerList.toString());
+
+		w.nightRound();
+		System.out.println(w.roleCount.toString());
+		System.out.println(w.playerList.toString());
+
 	}
 
 }
